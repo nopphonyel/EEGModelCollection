@@ -2,21 +2,25 @@ import torch
 import torch.nn as nn
 from layers import *
 
-"""This model is reimplemented on pytorch followed by this paper : EEGNet: A Compact Convolutional Neural Network
-for EEG-based Brain-Computer Interfaces"""
-
 
 class EEGNet(nn.Module):
+    """
+    This model is reimplemented on pytorch followed by this paper : EEGNet: A Compact Convolutional Neural Network
+    for EEG-based Brain-Computer Interfaces
+    link : https://arxiv.org/abs/1611.08024
+    """
     def __init__(self, in_channel, samples, kern_len, F1, F2, D, nb_classes, dropout_type='2D', dropout_rate=0.5,
                  norm_rate=0.25):
         """
         Expected input shape (BS, 1 (Later will be temporal features), CH, Samples)
-        :param in_channel:
-        :param samples:
-        :param kern_len:
-        :param F1:
-        :param F2:
-        :param D:
+        :param in_channel: Number of input EEG channel or electrodes
+        :param samples: Number of samples (datapoint in EEG signal on each electrode)
+        :param kern_len: (Hyper parameter) The block1 kernel size (In the paper use size = sampling rate//2)
+        :param F1: (Hyper parameter) Number of temporal features
+        :param F2: (Hyper parameter) Number of pointwise filters
+        :param D: (Hyper parameter) Depth multipiler
+        :param nb_classes: Number of output class.
+        :dropout_type: {'2D', 'classics'} choose your drop out type.
         """
         super(EEGNet, self).__init__()
         self.block1 = nn.Sequential(

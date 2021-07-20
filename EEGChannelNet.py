@@ -10,11 +10,13 @@ class EEGEncoder(nn.Module):
     This encoder is implemented by follow the architecture from research paper : Decoding Brain Representations 
     by Multimodal Learning of Neural Activity and Visual Features
     link : https://arxiv.org/abs/1810.10974
-    .
-    Currently, this model limited to a fixed size of EEG Input data in shape of (BS, 1, 128 electrodes, 440 EEG Samples)
     """
 
     def __init__(self, output_size):
+        """
+        Currently, this model limited to a fixed size of EEG Input data in shape of (BS, 1, 128 electrodes, 440 EEG Samples)
+        :param output_size (Hyper parameter) The size of output latent vector
+        """
         super(EEGEncoder, self).__init__()
         self.temporal_block = ParallelModule(
             nn.Sequential(
@@ -91,7 +93,7 @@ class EEGEncoder(nn.Module):
 
 def channelNetLoss(l_e1: torch.Tensor, l_v1: torch.Tensor, l_v2: torch.Tensor):
     """
-    The input should be a latent vector only... 
+    The input should be a latent vector only.
     """
     loss = (l_e1 @ l_v2.transpose(0, 1)) - (l_e1 @ l_v1.transpose(0, 1))
     loss = torch.diag(loss, diagonal=0).reshape(-1, 1).clamp(min=0)
