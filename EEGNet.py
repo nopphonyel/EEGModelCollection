@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from layers import *
+from utils.layers import *
 
 
 class EEGNet(nn.Module):

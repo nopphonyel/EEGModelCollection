@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 
-from container import ParallelModule
-from layers import ResidualBlock, Flatten
+from .utils.container import ParallelModule
+from .utils.layers import ResidualBlock, Flatten
 
 
 class EEGEncoder(nn.Module):
