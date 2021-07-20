@@ -98,15 +98,3 @@ def channelNetLoss(l_e1: torch.Tensor, l_v1: torch.Tensor, l_v2: torch.Tensor):
     loss = (l_e1 @ l_v2.transpose(0, 1)) - (l_e1 @ l_v1.transpose(0, 1))
     loss = torch.diag(loss, diagonal=0).reshape(-1, 1).clamp(min=0)
     return loss  # shape should be : [bs, 1] 
-
-
-if __name__ == "__main__":
-    BS = 2
-    # b = nn.MSELoss()
-    # sample = torch.rand(BS, 1, 128, 440)
-    # m = EEGChannelNet(output_size=1000)
-    # a = m(sample)
-    # print(a.shape)
-    a = torch.rand(BS, 1000)
-    t = channelNetLoss(a, a, a)
-    print(t.shape)

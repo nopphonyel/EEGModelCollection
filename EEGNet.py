@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from utils.layers import *
+from .utils.layers import *
 
 
 class EEGNet(nn.Module):
@@ -62,10 +62,3 @@ class EEGNet(nn.Module):
         x = self.final_fc(x)
         return x
 
-
-if __name__ == '__main__':
-    BS, TEM, CH, LEN = 2, 1, 16, 128
-    inp = torch.rand(BS, TEM, CH, LEN)
-    model = EEGNet(in_channel=CH, samples=LEN, kern_len=LEN//2, F1=16, F2=32, D=2, nb_classes=2)
-    out = model(inp)
-    print(out)
