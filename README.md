@@ -1,5 +1,5 @@
-# About this Repo
-This repo will contain some of Neural network models which design for EEG specific task. All of model in here are implemented on pytorch since my lab prefer this framework and I beleive that there are many implementation on TensorFlow or Keras already.
+# EEG Model Collection
+This repo will contain some of Neural network models which design for EEG specific task. All of model in here are implemented on **pytorch** since my lab (AIT Brainlab) prefer this framework and I beleive that there are many implementation on TensorFlow or Keras already.
 
 # Getting start
 ## Requirements
@@ -17,12 +17,18 @@ numpy
      ```
 
 ## Import code
-1. To import the model, simply add the code below on the top of your python file.
-    ```python 
-    from EEGModelCollection import <Your component>
-    ``` 
+To import the model, simply add the code below on the top of your python file.
 
-# Model details
-## EEGNet
-## EEGChannelNet
+```python
+from EEGModelCollection import <Your Component>
+```
+For example, to import EEGNet component and EEGChannelNetEncoder
+```python
+from EEGModelCollection import EEGNet
+from EEGModelCollection import EEGChannelNetEncoder
+``` 
+
+# Model explaination
+In this section, I will give the information about all models in the collection. The informations include architecture, arguments and how to use it.
+- [EEGNet](docs/EEGNet/EEGNet.md)
 

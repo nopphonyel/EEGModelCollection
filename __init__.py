@@ -1,2 +1,2 @@
-from EEGChannelNet import *
-from EEGNet import *
+from .EEGChannelNet import EEGChannelNetEncoder
+from .EEGNet import EEGNet

@@ -5,7 +5,7 @@ from .utils.container import ParallelModule
 from .utils.layers import ResidualBlock, Flatten
 
 
-class EEGEncoder(nn.Module):
+class EEGChannelNetEncoder(nn.Module):
     """
     This encoder is implemented by follow the architecture from research paper : Decoding Brain Representations 
     by Multimodal Learning of Neural Activity and Visual Features
@@ -17,7 +17,7 @@ class EEGEncoder(nn.Module):
         Currently, this model limited to a fixed size of EEG Input data in shape of (BS, 1, 128 electrodes, 440 EEG Samples)
         :param output_size (Hyper parameter) The size of output latent vector
         """
-        super(EEGEncoder, self).__init__()
+        super(EEGChannelNetEncoder, self).__init__()
         self.temporal_block = ParallelModule(
             nn.Sequential(
                 nn.Conv2d(kernel_size=(1, 33), stride=(1, 2), dilation=(1, 1), padding=(0, 16), in_channels=1,

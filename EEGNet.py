@@ -21,6 +21,7 @@ class EEGNet(nn.Module):
         :param D: (Hyper parameter) Depth multipiler
         :param nb_classes: Number of output class.
         :dropout_type: {'2D', 'classics'} choose your drop out type.
+        :param norm_rate: 
         """
         super(EEGNet, self).__init__()
         self.block1 = nn.Sequential(
